@@ -1,4 +1,4 @@
-from fuzzyhealthsystem.membership.membership_functions import TriangularMF, \
+from fuzzycontroller.membership.membership_functions import TriangularMF, \
         TrapezoidalMF, GauAngleMF
 import skfuzzy as fuzz
 import numpy as np

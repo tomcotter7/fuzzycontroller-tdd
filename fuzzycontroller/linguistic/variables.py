@@ -1,4 +1,4 @@
-from fuzzyhealthsystem.linguistic.terms import LinguisticTerm
+from fuzzycontroller.linguistic.terms import LinguisticTerm
 import numpy as np
 
 

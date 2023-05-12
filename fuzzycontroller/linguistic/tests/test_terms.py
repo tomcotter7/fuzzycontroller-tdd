@@ -1,5 +1,5 @@
-from fuzzyhealthsystem.linguistic.terms import LinguisticTerm
-from fuzzyhealthsystem.membership.membership_functions import TriangularMF
+from fuzzycontroller.linguistic.terms import LinguisticTerm
+from fuzzycontroller.membership.membership_functions import TriangularMF
 import numpy as np
 
 

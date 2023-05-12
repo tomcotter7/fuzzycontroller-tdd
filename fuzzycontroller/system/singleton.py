@@ -1,5 +1,5 @@
-from fuzzyhealthsystem.utils.json_handler import JsonHandler
-from fuzzyhealthsystem.linguistic.variables import LinguisticVariable
+from fuzzycontroller.utils.json_handler import JsonHandler
+from fuzzycontroller.linguistic.variables import LinguisticVariable
 
 
 class SingletonFIS:
