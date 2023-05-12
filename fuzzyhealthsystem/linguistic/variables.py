@@ -10,8 +10,11 @@ class LinguisticVariable:
         self.terms = self._load_terms(data['terms'])
 
     def _load_universe(self, universe):
-        return np.arange(universe['start'], universe['end'], universe['step'])
+        print(universe)
+        return np.arange(float(universe['start']),
+                         float(universe['end']),
+                         float(universe['step']))
 
     def _load_terms(self, terms):
-        return [LinguisticTerm(item[0], self.universe, item[1])
+        return [LinguisticTerm(self.universe, item[1])
                 for item in terms.items()]

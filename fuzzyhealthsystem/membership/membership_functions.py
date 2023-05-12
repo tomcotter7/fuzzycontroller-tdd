@@ -128,7 +128,7 @@ class TrapezoidalMF(MembershipFunction):
 class GauAngleMF(MembershipFunction):
 
     def __init__(self, universe: np.ndarray, params: list,
-                 start: int, end: int):
+                 start: float, end: float):
         """
         Create a GauAngle membership function.
 
