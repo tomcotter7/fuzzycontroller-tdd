@@ -145,9 +145,12 @@ class GauAngleMF(MembershipFunction):
         self._mf = fuzz.gaussmf(universe, params[0], params[1])
         step = universe[1] - universe[0]
         start_idx = int(start * (1 / step)) + 1
-        end_idx = int(end * (1 / step))
+        if start_idx < 0:
+            start_idx = 0
         self._mf[:start_idx] = [0] * start_idx
-        self._mf[end_idx:] = [0] * (len(universe) - end_idx)
+        if end != -1:
+            end_idx = int(end * (1 / step))
+            self._mf[end_idx:] = [0] * (len(universe) - end_idx)
 
     @property
     def universe(self):

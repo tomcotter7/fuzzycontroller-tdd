@@ -130,3 +130,17 @@ def test_singleton_interp_mem_gauangle_outside_range_lower_high_resolution():
     x = 2
     gamf = GauAngleMF(universe, [4, 1], 2, 6)
     assert gamf.singleton_interp_mem(x) == 0
+
+
+def test_gauangle_with_no_start():
+    universe = np.arange(0, 11, 1)
+    gamf = GauAngleMF(universe, [4, 1], -1, 6)
+    assert gamf.mf[0] != 0
+    assert gamf.singleton_interp_mem(4) == 1.0
+
+
+def test_gauangle_with_no_end():
+    universe = np.arange(0, 11, 1)
+    gamf = GauAngleMF(universe, [4, 1], 0, -1)
+    assert gamf.mf[-1] != 0
+    assert gamf.singleton_interp_mem(4) == 1.0

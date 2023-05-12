@@ -24,6 +24,42 @@
           }
         }
       }
+    },
+    "headache": {
+      "universe": {
+        "start": "0",
+        "end": "10.1",
+        "step": "0.1"
+      },
+      "terms": {
+        "none": {
+          "name": "None",
+          "mf":{
+            "type": "gauanglemf",
+            "params": [0, 0.25],
+            "start": "-1",
+            "end": "1"
+          }
+        }
+      }
+      }
+    },
+    "output": {
+      "urgency": {
+        "universe": {
+          "start": "0",
+          "end": "100",
+          "step": "0.1"
+        },
+        "terms": {
+          "none": {
+            "name": "None",
+            "mf":{
+              "type": "trimf",
+              "params": [0, 0, 5]
+            }
+          }
+        }    
     }
   }
 }

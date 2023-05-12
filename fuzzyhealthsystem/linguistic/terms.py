@@ -22,6 +22,10 @@ class LinguisticTerm:
             return TriangularMF(self.universe, mf['params'])
         elif mf['type'] == "trapmf":
             return TrapezoidalMF(self.universe, mf['params'])
-        elif mf['type'] == "gauanglemf":
-            return GauAngleMF(self.universe, mf['params'],
-                              float(mf['start']), float(mf['end']))
+        return GauAngleMF(self.universe, mf['params'],
+                          float(mf['start']), float(mf['end']))
+
+    def compute_membership(self, crisp_input: float or np.ndarray,
+                           input_type: str):
+        if input_type == "singleton":
+            return self.mf.singleton_interp_mem(crisp_input)
