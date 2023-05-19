@@ -47,11 +47,11 @@ def test_load_terms():
                                 }
                              })
 
-    assert lv.terms == [LinguisticTerm(np.arange(0, 60, 0.1),
-                                       {"name": "cold",
-                                        "mf": {
-                                            "type": "trimf",
-                                            "params": [0, 10, 20]}})]
+    assert lv.terms == {"cold": LinguisticTerm(np.arange(0, 60, 0.1),
+                                               {"name": "cold",
+                                                "mf": {
+                                                    "type": "trimf",
+                                                    "params": [0, 10, 20]}})}
 
 
 def test_load_terms_gauangle():
@@ -66,13 +66,12 @@ def test_load_terms_gauangle():
                                         "start": 0,
                                         "end": 60}}}})
 
-    assert lv.terms == [LinguisticTerm(np.arange(0, 60, 0.1),
-                                       {"name": "cold",
-                                        "mf": {
-                                            "type": "gauanglemf",
-                                            "params": [0, 10, 20],
-                                            "start": 0,
-                                            "end": 60}})]
+    assert lv.terms == {"cold": LinguisticTerm(np.arange(0, 60, 0.1),
+                                               {"name": "cold",
+                                               "mf": {"type": "gauanglemf",
+                                                      "params": [0, 10, 20],
+                                                      "start": 0,
+                                                      "end": 60}})}
 
 
 def test_get_all_firing_strengths_singleton():
@@ -85,4 +84,4 @@ def test_get_all_firing_strengths_singleton():
                                        }
                              })
     fs = lv.compute_all_firing_strengths(10, "singleton")
-    assert fs == [("cold", 1.0)]
+    assert fs == {"cold": 1.0}

@@ -1,23 +1,30 @@
 from fuzzycontroller.membership.membership_functions import TriangularMF, \
-        TrapezoidalMF, GauAngleMF
+        TrapezoidalMF, GauAngleMF, MembershipFunction
 import numpy as np
 
 
 class LinguisticTerm:
 
-    def __init__(self, universe, term):
+    def __init__(self, universe: np.ndarray, term: dict) -> None:
         self.name = term['name']
         self.universe = universe
         self.mf = self._load_mf(term['mf'])
 
-    def __eq__(self, other):
+    def __eq__(self, other) -> bool:
         if isinstance(other, LinguisticTerm):
             return self.name == other.name and \
                     np.array_equal(self.universe, other.universe) and \
                     self.mf == other.mf
         return False
 
-    def _load_mf(self, mf):
+    def _load_mf(self, mf: dict) -> MembershipFunction:
+        """
+        Load the membership function from a dictionary.
+        Should be of the form {'type': 'trimf', 'params': [a, b, c]}
+
+        Args:
+            mf: dictionary containing the membership function info.
+        """
         if mf['type'] == "trimf":
             return TriangularMF(self.universe, mf['params'])
         elif mf['type'] == "trapmf":
@@ -26,6 +33,18 @@ class LinguisticTerm:
                           float(mf['start']), float(mf['end']))
 
     def compute_membership(self, crisp_input: float or np.ndarray,
-                           input_type: str):
+                           input_type: str) -> float:
+        """
+        Compute the membership value of the given crisp input.
+
+        Args:
+            crisp_input: crisp input value.
+            input_type: type of the input, either 'singleton' or
+                'non-singleton'
+        Returns:
+            membership value of the given crisp input.
+        """
         if input_type == "singleton":
             return self.mf.singleton_interp_mem(crisp_input)
+
+        return 0.0
