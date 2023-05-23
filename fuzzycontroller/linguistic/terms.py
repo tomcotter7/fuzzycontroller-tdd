@@ -48,3 +48,20 @@ class LinguisticTerm:
             return self.mf.singleton_interp_mem(crisp_input)
 
         return 0.0
+
+    def apply_fmax_or_fmin(self, f, other_input):
+        """
+        Apply the fmax or fmin function to the membership function of this
+        linguistic term and another input np.ndarray. Used for applying OR
+        and AND, as well as for applying the implication function.
+
+        Args:
+            f: either np.fmax or np.fmin
+            other_input: np.ndarray of the other input
+
+        Returns:
+            np.ndarray: the result of applying f to the membership function of
+                this linguistic term and other_input.
+        """
+
+        return f(self.mf.mf, other_input)

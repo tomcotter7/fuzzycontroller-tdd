@@ -1,6 +1,7 @@
 from __future__ import annotations
 from fuzzycontroller.rule.propositions import Consequent, Antecedents
 from fuzzycontroller.linguistic.variables import LinguisticVariable
+import numpy as np
 
 
 class Rule():
@@ -15,3 +16,11 @@ class Rule():
         ants = self.antecedents.to_string()
         cons = self.consequent.to_string()
         return f"IF {ants} THEN {cons}"
+
+    def apply_rule(self, firing_strengths: dict[str, dict[str, float]]) \
+            -> np.ndarray:
+
+        cylindrical_extension = self.antecedents \
+                .get_cylindrical_extension(firing_strengths)
+
+        return self.consequent.compute_output_set(cylindrical_extension)
