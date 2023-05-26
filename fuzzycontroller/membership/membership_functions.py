@@ -32,8 +32,8 @@ class MembershipFunction(ABC):
             float: The membership value of x in mf.
 
         """
-        if x not in self.universe:
-            raise ValueError("X is outside range of universe")
+        if x > max(self.universe) or x < min(self.universe):
+            raise ValueError("%f is outside range of universe" % (x))
         return fuzz.interp_membership(self.universe, self.mf, x)
 
     def nonsingleton_interp_mem(self, input_mf: np.ndarray,

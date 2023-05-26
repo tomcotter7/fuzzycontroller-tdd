@@ -1,0 +1,113 @@
+{
+  "inputs": {
+    "temperature": {
+      "universe": {
+        "start": "0",
+        "end": "60.1",
+        "step": "0.1"
+      },
+      "terms": {
+        "very_cold": {
+          "name": "very_cold",
+          "mf":{
+            "type": "trapmf",
+            "params": [0, 0, 32, 35.1]
+          }
+        },
+        "cold": {
+          "name": "cold",
+          "mf":{
+            "type": "gauanglemf",
+            "params": [35.3, 0.25],
+            "start": "35",
+            "end": "40"
+          }
+        },
+        "standard": {
+          "name": "standard",
+          "mf": {
+            "type": "gauanglemf",
+            "params": [37, 0.5],
+            "start": "35.4",
+            "end": "38.5"
+          }
+        },
+        "very_hot": {
+          "name": "very_hot",
+          "mf": {
+            "type": "trapmf",
+            "params": [39, 41, 60, 60]
+          }
+        }
+      }
+    },
+    "headache": {
+      "universe": {
+        "start": "0",
+        "end": "10.1",
+        "step": "0.1"
+      },
+      "terms": {
+        "none": {
+          "name": "none",
+          "mf":{
+            "type": "gauanglemf",
+            "params": [0, 0.25],
+            "start": "-1",
+            "end": "1"
+          }
+        },
+        "moderate": {
+          "name": "moderate",
+          "mf":{
+            "type": "gauanglemf",
+            "params": [5, 1],
+            "start": "2",
+            "end": "8"
+          }
+        }
+      }
+    }
+  },
+  "output": {
+    "urgency": {
+      "universe": {
+        "start": "0",
+        "end": "100",
+        "step": "0.1"
+      },
+      "terms": {
+        "low": {
+          "name": "low",
+          "mf":{
+            "type": "trapmf",
+            "params": [0, 10, 20, 30]
+          }
+        },
+        "emergency": {
+          "name": "emergency",
+          "mf":{
+            "type": "trapmf",
+            "params": [85, 95, 100, 100]
+          }
+        }
+      }    
+  }
+  },
+  "rules": {
+    "rule1": {
+      "antecedent": {
+        "antecedent1": "temperature IS very_cold",
+        "operator": "OR",
+        "antecedent2": "temperature IS very_hot"},
+      "consequent": "urgency IS emergency"
+    },
+    "rule15": {
+      "antecedent": {
+        "antecedent1": "temperature IS standard",
+        "operator": "AND",
+        "antecedent": "headache IS moderate"},
+      "consequent": "urgency IS low"
+    }
+  }
+}

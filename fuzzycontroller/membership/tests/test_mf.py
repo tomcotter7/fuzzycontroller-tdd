@@ -111,6 +111,22 @@ def test_singleton_interp_mem_gauangle_inside_gaussian():
     assert expected == actual
 
 
+def test_singleton_interp_mem_gauanle_with_float_start_stop():
+    universe = np.arange(0, 11, 0.1)
+    gamf = GauAngleMF(universe, [3, 1], 2.1, 4.4)
+    gmf = fuzz.gaussmf(universe, 3, 1)
+    """
+    for i in range(len(gamf.mf)):
+        print(gamf.mf[i], gamf.universe[i])
+    """
+    assert gamf.singleton_interp_mem(1.9) == 0
+    assert gamf.singleton_interp_mem(2.2) == \
+        fuzz.interp_membership(universe, gmf, 2.2)
+    assert gamf.singleton_interp_mem(4.3) == \
+        fuzz.interp_membership(universe, gmf, 4.3)
+    assert gamf.singleton_interp_mem(4.6) == 0
+
+
 def test_singleton_interp_mem_gauangle_outside_range_lower():
     universe = np.arange(0, 11, 1)
     x = 2
