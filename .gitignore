@@ -1,3 +1,7 @@
 **/__pycache__/
-.env/
+.fuzzy-venv/
+/docs/make.bat
+/docs/Makefile
+/docs/source/
+
 
