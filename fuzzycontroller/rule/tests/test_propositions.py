@@ -1,6 +1,6 @@
-from fuzzycontroller.rule.propositions import Antecedent, Consequent, \
+from ..propositions import Antecedent, Consequent, \
         Antecedents
-from fuzzycontroller.linguistic.variables import LinguisticVariable
+from ...linguistic.variables import LinguisticVariable
 import pytest
 
 

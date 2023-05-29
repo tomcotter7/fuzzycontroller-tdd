@@ -1,7 +1,7 @@
 from __future__ import annotations
-from fuzzycontroller.utils.json_handler import JsonHandler
-from fuzzycontroller.linguistic.variables import LinguisticVariable
-from fuzzycontroller.rule.rules import Rules
+from ..utils.json_handler import JsonHandler
+from ..linguistic.variables import LinguisticVariable
+from ..rule.rules import Rules
 import numpy as np
 import skfuzzy as fuzz
 

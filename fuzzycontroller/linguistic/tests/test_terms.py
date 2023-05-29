@@ -1,5 +1,5 @@
-from fuzzycontroller.linguistic.terms import LinguisticTerm
-from fuzzycontroller.membership.membership_functions import TriangularMF
+from ..terms import LinguisticTerm
+from ...membership.membership_functions import TriangularMF
 import numpy as np
 
 

@@ -1,4 +1,4 @@
-from fuzzycontroller.utils.json_handler import JsonHandler
+from ..json_handler import JsonHandler
 
 
 def test_load_file():

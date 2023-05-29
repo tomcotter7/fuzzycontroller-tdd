@@ -1,6 +1,6 @@
 from __future__ import annotations
-from fuzzycontroller.rule.propositions import Consequent, Antecedents
-from fuzzycontroller.linguistic.variables import LinguisticVariable
+from .propositions import Consequent, Antecedents
+from ..linguistic.variables import LinguisticVariable
 import numpy as np
 
 

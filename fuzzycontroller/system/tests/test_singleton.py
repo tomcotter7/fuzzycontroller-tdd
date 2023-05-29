@@ -1,4 +1,4 @@
-from fuzzycontroller.system.singleton import SingletonFIS
+from ..singleton import SingletonFIS
 import numpy as np
 import skfuzzy as fuzz
 import pytest

@@ -1,5 +1,5 @@
-from fuzzycontroller.linguistic.variables import LinguisticVariable
-from fuzzycontroller.linguistic.terms import LinguisticTerm
+from ..variables import LinguisticVariable
+from ..terms import LinguisticTerm
 import numpy as np
 
 

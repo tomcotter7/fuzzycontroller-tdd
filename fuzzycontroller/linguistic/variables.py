@@ -1,5 +1,5 @@
 from __future__ import annotations
-from fuzzycontroller.linguistic.terms import LinguisticTerm
+from ..linguistic.terms import LinguisticTerm
 import numpy as np
 
 

@@ -1,5 +1,5 @@
-from fuzzycontroller.rule.rule import Rule
-from fuzzycontroller.linguistic.variables import LinguisticVariable
+from ..rule import Rule
+from ...linguistic.variables import LinguisticVariable
 import pytest
 import numpy as np
 

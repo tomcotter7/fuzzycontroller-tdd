@@ -1,4 +1,4 @@
-from fuzzycontroller.membership.membership_functions import TriangularMF, \
+from ..membership.membership_functions import TriangularMF, \
         TrapezoidalMF, GauAngleMF, MembershipFunction
 import numpy as np
 

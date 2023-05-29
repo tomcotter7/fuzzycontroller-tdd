@@ -1,6 +1,6 @@
 from __future__ import annotations
-from fuzzycontroller.linguistic.variables import LinguisticVariable
-from fuzzycontroller.linguistic.terms import LinguisticTerm
+from ..linguistic.variables import LinguisticVariable
+from ..linguistic.terms import LinguisticTerm
 from abc import ABC, abstractmethod
 import numpy as np
 
