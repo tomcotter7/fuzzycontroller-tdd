@@ -25,7 +25,9 @@ class Proposition(ABC):
 
         Args:
             prop: string representation of the proposition.
-            lvs: dict of linguistic variables.
+                ex. 'linguistic_variable IS term'
+            lvs: dict of linguistic variables. Keys are the names of the
+                linguistic variables.
 
         Returns:
             name: name of the linguistic variable.
@@ -83,7 +85,6 @@ class Antecedent(Proposition):
             ant: string representation of the antecedent.
             lvs: dictionary of linguistic variables.
         """
-        # self._name, self._term = self.parse_antecedent(ant, lvs)
         self._negate = False
         if "NOT" in ant:
             self._negate = True
@@ -112,19 +113,19 @@ class Antecedent(Proposition):
         else:
             return super().to_string()
 
-    def get_cylindrical_extension(self, firing_strength:
+    def get_cylindrical_extension(self, firing_strengths:
                                   dict[str, dict[str, float]]) -> float:
         """
         Get the cylindrical extension of a single antecedent.
         Also applies NOT if this is the case
 
         Args:
-            firing_strength: dict of firing strengths.
+            firing_strengths: dict of firing strengths.
 
         Returns:
             cylindrical_extension: cylindrical extension of the antecedent.
         """
-        fss = firing_strength[self.name]
+        fss = firing_strengths[self.name]
         if self.negate:
             return 1 - fss[self.term.name]
         return fss[self.term.name]
