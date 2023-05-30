@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="fuzzycontroller" href="modules.html" />
 
     <!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
         <title>Fuzzy-Controller v0.0.1 documentation</title>
@@ -134,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -154,7 +154,21 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="modules.html">fuzzycontroller</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of fuzzycontroller</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="fuzzycontroller.html">fuzzycontroller package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of fuzzycontroller package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="fuzzycontroller.linguistic.html">fuzzycontroller.linguistic package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fuzzycontroller.membership.html">fuzzycontroller.membership package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fuzzycontroller.rule.html">fuzzycontroller.rule package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fuzzycontroller.system.html">fuzzycontroller.system package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fuzzycontroller.utils.html">fuzzycontroller.utils package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
 </div>
 </div>
 
@@ -181,65 +195,22 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="module-fuzzycontroller.linguistic.terms">
-<span id="welcome-to-fuzzy-controller-s-documentation"></span><h1>Welcome to Fuzzy-Controller’s documentation!<a class="headerlink" href="#module-fuzzycontroller.linguistic.terms" title="Permalink to this heading">#</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="fuzzycontroller.linguistic.terms.LinguisticTerm">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fuzzycontroller.linguistic.terms.</span></span><span class="sig-name descname"><span class="pre">LinguisticTerm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">universe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">term</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fuzzycontroller.linguistic.terms.LinguisticTerm" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="fuzzycontroller.linguistic.terms.LinguisticTerm.apply_fmax_or_fmin">
-<span class="sig-name descname"><span class="pre">apply_fmax_or_fmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other_input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fuzzycontroller.linguistic.terms.LinguisticTerm.apply_fmax_or_fmin" title="Permalink to this definition">#</a></dt>
-<dd><p>Apply the fmax or fmin function to the membership function of this
-linguistic term and another input np.ndarray. Used for applying OR
-and AND, as well as for applying the implication function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>f</strong> – either np.fmax or np.fmin</p></li>
-<li><p><strong>other_input</strong> – np.ndarray of the other input</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><dl class="simple">
-<dt>the result of applying f to the membership function of</dt><dd><p>this linguistic term and other_input.</p>
-</dd>
-</dl>
-</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>np.ndarray</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="fuzzycontroller.linguistic.terms.LinguisticTerm.compute_membership">
-<span class="sig-name descname"><span class="pre">compute_membership</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crisp_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#fuzzycontroller.linguistic.terms.LinguisticTerm.compute_membership" title="Permalink to this definition">#</a></dt>
-<dd><p>Compute the membership value of the given crisp input.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>crisp_input</strong> – crisp input value.</p></li>
-<li><p><strong>input_type</strong> – type of the input, either ‘singleton’ or
-‘non-singleton’</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>membership value of the given crisp input.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
+          <section id="welcome-to-fuzzy-controller-s-documentation">
+<h1>Welcome to Fuzzy-Controller’s documentation!<a class="headerlink" href="#welcome-to-fuzzy-controller-s-documentation" title="Permalink to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">fuzzycontroller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fuzzycontroller.html">fuzzycontroller package</a></li>
+</ul>
+</li>
+</ul>
 </div>
 </section>
 <section id="indices-and-tables">
@@ -256,7 +227,15 @@ and AND, as well as for applying the implication function.</p>
       <footer>
         
         <div class="related-pages">
-          
+          <a class="next-page" href="modules.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">fuzzycontroller</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
           
         </div>
         <div class="bottom-of-page">
@@ -276,32 +255,8 @@ and AND, as well as for applying the implication function.</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Welcome to Fuzzy-Controller’s documentation!</a><ul>
-<li><a class="reference internal" href="#fuzzycontroller.linguistic.terms.LinguisticTerm"><code class="docutils literal notranslate"><span class="pre">LinguisticTerm</span></code></a><ul>
-<li><a class="reference internal" href="#fuzzycontroller.linguistic.terms.LinguisticTerm.apply_fmax_or_fmin"><code class="docutils literal notranslate"><span class="pre">LinguisticTerm.apply_fmax_or_fmin()</span></code></a></li>
-<li><a class="reference internal" href="#fuzzycontroller.linguistic.terms.LinguisticTerm.compute_membership"><code class="docutils literal notranslate"><span class="pre">LinguisticTerm.compute_membership()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

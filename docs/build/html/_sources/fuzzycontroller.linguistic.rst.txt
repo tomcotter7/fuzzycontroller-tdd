@@ -1,0 +1,29 @@
+fuzzycontroller.linguistic package
+==================================
+
+Modules
+-------
+
+fuzzycontroller.linguistic.terms
+--------------------------------
+
+.. automodule:: fuzzycontroller.linguistic.terms
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+fuzzycontroller.linguistic.variables
+------------------------------------
+
+.. automodule:: fuzzycontroller.linguistic.variables
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: fuzzycontroller.linguistic
+   :members:
+   :undoc-members:
+   :show-inheritance:

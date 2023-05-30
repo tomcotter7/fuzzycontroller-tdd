@@ -1,0 +1,7 @@
+fuzzycontroller
+===============
+
+.. toctree::
+   :maxdepth: 4
+
+   fuzzycontroller

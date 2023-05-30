@@ -1,0 +1,21 @@
+fuzzycontroller.system package
+==============================
+
+Submodules
+----------
+
+fuzzycontroller.system.singleton module
+---------------------------------------
+
+.. automodule:: fuzzycontroller.system.singleton
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: fuzzycontroller.system
+   :members:
+   :undoc-members:
+   :show-inheritance:

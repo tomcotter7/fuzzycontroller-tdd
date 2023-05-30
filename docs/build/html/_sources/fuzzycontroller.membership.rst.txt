@@ -1,0 +1,21 @@
+fuzzycontroller.membership package
+==================================
+
+Modules
+-------
+
+fuzzycontroller.membership.membership\_functions
+------------------------------------------------
+
+.. automodule:: fuzzycontroller.membership.membership_functions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: fuzzycontroller.membership
+   :members:
+   :undoc-members:
+   :show-inheritance:

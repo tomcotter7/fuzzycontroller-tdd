@@ -1,15 +1,11 @@
 Welcome to Fuzzy-Controller's documentation!
 ============================================
 
-.. automodule:: fuzzycontroller.linguistic.terms
-    :members:
-    :undoc-members:
-    :show-inheritance:
-    :inherited-members:
-
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+
+   modules
 
 
 

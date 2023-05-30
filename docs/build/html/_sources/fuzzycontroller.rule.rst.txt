@@ -1,0 +1,37 @@
+fuzzycontroller.rule package
+============================
+
+Submodules
+----------
+
+fuzzycontroller.rule.propositions module
+----------------------------------------
+
+.. automodule:: fuzzycontroller.rule.propositions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+fuzzycontroller.rule.rule module
+--------------------------------
+
+.. automodule:: fuzzycontroller.rule.rule
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+fuzzycontroller.rule.rules module
+---------------------------------
+
+.. automodule:: fuzzycontroller.rule.rules
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: fuzzycontroller.rule
+   :members:
+   :undoc-members:
+   :show-inheritance:

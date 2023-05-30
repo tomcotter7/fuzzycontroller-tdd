@@ -53,7 +53,7 @@ class SingletonFIS:
             'input2': ...}
 
         """
-        return {key: self.variables[key].compute_all_firing_strengths(
+        return {key: self.variables[key].compute_memberships(
                 crisp_inputs[key], "singleton")
                 for key in crisp_inputs.keys()}
 

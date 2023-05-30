@@ -6,22 +6,27 @@ import numpy as np
 
 
 class Proposition(ABC):
+    """An abstract class for any Proposition
+
+    A Proposition is defined as an Antecedent or Consequent, with
+    only 1 linguistic term, i.e "temperature IS hot".
+    """
 
     @property
     @abstractmethod
     def name(self) -> str:
-        """Return the name of the linguistic variable."""
+        """The name of the linguistic variable."""
         pass
 
     @property
     @abstractmethod
     def term(self) -> LinguisticTerm:
-        """Return the linguistic term of the proposition."""
+        """The linguistic term of the proposition."""
         pass
 
     def parse_proposition(self, prop: str, lvs: dict[str, LinguisticVariable])\
             -> tuple[str, LinguisticTerm]:
-        """Parse a proposition string into a linguistic variable and term.
+        """Parses a proposition string into a linguistic variable and term.
 
         Args:
             prop: string representation of the proposition.
@@ -40,14 +45,16 @@ class Proposition(ABC):
             raise ValueError("Linguistic Variable not found")
 
     def to_string(self) -> str:
-        """Return a string representation of the proposition."""
+        """Returns a string representation of the proposition."""
         return f"{self.name} IS {self.term.name}"
 
 
 class Consequent(Proposition):
+    """A Consequent of a fuzzy rule"""
 
     def __init__(self, conq: str, lvs: dict[str, LinguisticVariable]):
-        """
+        """Initializes a consequent.
+
         Args:
             conq: string representation of the consequent.
             lvs: dict of linguistic variables.
@@ -56,17 +63,15 @@ class Consequent(Proposition):
 
     @property
     def name(self) -> str:
-        """Return the name of the linguistic variable."""
         return self._name
 
     @property
     def term(self) -> LinguisticTerm:
-        """Return the linguistic term of the proposition."""
         return self._term
 
     def compute_output_set(self, cylindrical_extension: float or np.ndarray) \
             -> np.ndarray:
-        """Compute the output set of the consequent.
+        """Computes the output set of the consequent.
 
         Args:
             cylindrical_extension: cylindrical extension of the antecedents.
@@ -78,9 +83,14 @@ class Consequent(Proposition):
 
 
 class Antecedent(Proposition):
+    """A Antecedent of a fuzzy rule
+
+    Of the form 'temperature IS hot'
+    """
 
     def __init__(self, ant: str, lvs: dict[str, LinguisticVariable]):
-        """
+        """Initializes an antecedent
+        
         Args:
             ant: string representation of the antecedent.
             lvs: dictionary of linguistic variables.
@@ -93,21 +103,19 @@ class Antecedent(Proposition):
 
     @property
     def negate(self) -> bool:
-        """Return true if we should negate this"""
+        """True if we should negate the antedecent"""
         return self._negate
 
     @property
     def name(self) -> str:
-        """Return the name of the linguistic variable."""
         return self._name
 
     @property
     def term(self) -> LinguisticTerm:
-        """Return the linguistic term of the proposition."""
         return self._term
 
     def to_string(self) -> str:
-        """Return a string representation of the proposition."""
+        """Returns a string representation of the proposition."""
         if self.negate:
             return f"NOT {super().to_string()}"
         else:
@@ -115,8 +123,7 @@ class Antecedent(Proposition):
 
     def get_cylindrical_extension(self, firing_strengths:
                                   dict[str, dict[str, float]]) -> float:
-        """
-        Get the cylindrical extension of a single antecedent.
+        """Returns the cylindrical extension of a single antecedent.
         Also applies NOT if this is the case
 
         Args:
@@ -132,14 +139,27 @@ class Antecedent(Proposition):
 
 
 class Antecedents():
+    """Multiple Antecedents of a single fuzzy rule
+
+    Of the form '(temperature IS hot) and (headache IS high)'
+    """
 
     def __init__(self, antecedents: dict,
                  lvs: dict[str, LinguisticVariable]):
+        """Initializes the antecedents
+
+        Args:
+            antecedents: A dictionary representing the antecendents.
+                Of the form {'antecedent1': data, 'operator': OR,
+                'antecedent2': data}
+            lvs: A dictionary representing the linguistic variables
+
+        """
         self.antecedents = self._load_antecedents(lvs, antecedents)
 
     @property
     def single_antecedent(self) -> bool:
-        """Return true if there is only one antecedent."""
+        """True if there is only one antecedent."""
         return self._single_antecedent
 
     def _load_antecedents(self, lvs: dict[str, LinguisticVariable],
@@ -150,6 +170,8 @@ class Antecedents():
         'operator': 'AND', 'antecedent2': str or dict}
 
         Args:
+            lvs: dictionary containing info the linguistic variables for this
+                system
             antecedents: dictionary containing the antecedents info.
         """
         self._single_antecedent = False

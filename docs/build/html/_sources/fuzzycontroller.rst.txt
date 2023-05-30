@@ -1,0 +1,22 @@
+fuzzycontroller package
+=======================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   fuzzycontroller.linguistic
+   fuzzycontroller.membership
+   fuzzycontroller.rule
+   fuzzycontroller.system
+   fuzzycontroller.utils
+
+Module contents
+---------------
+
+.. automodule:: fuzzycontroller
+   :members:
+   :undoc-members:
+   :show-inheritance:
