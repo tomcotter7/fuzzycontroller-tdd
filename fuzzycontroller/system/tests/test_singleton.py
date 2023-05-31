@@ -43,7 +43,7 @@ def test_load_output(sfis):
 def test_load_rule(sfis):
     s = "IF (temperature IS very_cold OR temperature IS very_hot)" + \
         " THEN urgency IS emergency"
-    assert sfis.rg.rules['rule1'].to_string() == s
+    assert sfis.rules.rules['rule1'].to_string() == s
 
 
 def test_compute_output_sets(sfis):
