@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/tomcotter7/fuzzycontroller-tdd/branch/main/graph/badge.svg?token=YKUP2O26LK)](https://codecov.io/gh/tomcotter7/fuzzycontroller-tdd)
+
 # Fuzzy Controller (TDD)
 
 This project is an extensible fuzzy inference system (FIS) that can be used to create fuzzy controllers. It is written in Python and uses the [skfuzzy](https://github.com/scikit-fuzzy/scikit-fuzzy) library for fuzzy logic operations.
