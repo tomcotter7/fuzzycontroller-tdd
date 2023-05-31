@@ -5,11 +5,20 @@ import numpy as np
 
 
 class Rules():
+    """Multiple rules for the whole system
+
+    Defined as multiple :class: `.Rule` objects.
+
+    Attributes:
+        output_sets: dictionary of output sets of the rules. The keys are the
+            name of the rule.
+        lvs: dictionary of linguistic variables.
+        rules: dictionary of rules. The keys are the name of the rule.
+    """
 
     def __init__(self, rules: dict,
                  linguistic_variables: dict[str, LinguisticVariable]):
-        """
-        Initialize the rules.
+        """Initializes the rules.
 
         Args:
             rules: dict of rules. These are in raw form and need to be parsed.
@@ -23,9 +32,10 @@ class Rules():
 
     @property
     def output_sets(self) -> dict[str, np.ndarray]:
-        """
-        Return the output sets of the rules.
-        Raises an error if the output sets have not been computed.
+        """The output sets of the rules.
+
+        Raises:
+            AttributeError if the output sets have not been computed.
         """
         if self._output_sets is not None:
             return self._output_sets
@@ -33,8 +43,7 @@ class Rules():
 
     def get_correct_output_sets(self,
                                 firing_strengths: dict[str, dict[str, float]]):
-        """
-        Return the correct output sets for the given firing strengths.
+        """Calculates the correct output sets for the given firing strengths.
 
         Args:
             firing_strengths: dict of firing strengths for each

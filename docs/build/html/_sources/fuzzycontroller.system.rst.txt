@@ -1,11 +1,11 @@
 fuzzycontroller.system package
 ==============================
 
-Submodules
-----------
+Modules
+-------
 
-fuzzycontroller.system.singleton module
----------------------------------------
+fuzzycontroller.system.singleton
+--------------------------------
 
 .. automodule:: fuzzycontroller.system.singleton
    :members:

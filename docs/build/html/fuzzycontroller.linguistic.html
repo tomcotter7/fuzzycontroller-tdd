@@ -237,15 +237,15 @@ associated membership function.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="fuzzycontroller.linguistic.terms.LinguisticTerm.apply_fmax_or_fmin">
-<span class="sig-name descname"><span class="pre">apply_fmax_or_fmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">ScalarType</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">ScalarType</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#fuzzycontroller.linguistic.terms.LinguisticTerm.apply_fmax_or_fmin" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">apply_fmax_or_fmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other_input</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">ScalarType</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#fuzzycontroller.linguistic.terms.LinguisticTerm.apply_fmax_or_fmin" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply the fmax or fmin function to the membership function of this
-linguistic term and another input np.ndarray. Used for applying OR
-and AND, as well as for applying the implication function.</p>
+linguistic term and another input np.ndarray/float. Used for applying
+OR and AND, as well as for applying the implication function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>f</strong> – either np.fmax or np.fmin</p></li>
-<li><p><strong>other_input</strong> – np.ndarray of the other input</p></li>
+<li><p><strong>other_input</strong> – the input np.ndarray/float</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>

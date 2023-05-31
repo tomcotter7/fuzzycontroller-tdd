@@ -5,22 +5,43 @@ import numpy as np
 
 
 class Rule():
+    """A rule.
+
+    This is of the form: IF <antecedent> THEN <consequent>, where
+    <antecedent> is an :class: `.Antecedents` and <consequent> is a
+    :class: `.Consequent`.
+
+    Attributes:
+        antecedents: antecedent of the rule.
+        consequent: consequent of the rule.
+    """
 
     def __init__(self, rule: dict,
                  linguistic_variables: dict[str, LinguisticVariable]):
+        """Initializes a rule.
+
+        The input rule dict should be of the form: {'antecedent': data,
+        'consequent': data}, where data is a dictionary representation of the
+        antecedent and consequent respectively.
+
+        Args:
+            rule: dictionary with the antecedent and consequent of the rule.
+            linguistic_variables: dictionary of linguistic variables.
+        """
         self.antecedents = Antecedents(rule['antecedent'],
                                        linguistic_variables)
         self.consequent = Consequent(rule['consequent'], linguistic_variables)
 
     def to_string(self) -> str:
-        """Return a string representation of the rule."""
+        """Returns a string representation of the rule."""
         ants = self.antecedents.to_string()
         cons = self.consequent.to_string()
         return f"IF {ants} THEN {cons}"
 
     def apply_rule(self, firing_strengths: dict[str, dict[str, float]]) \
             -> np.ndarray:
-        """Apply the rule to the firing strengths of the antecedents.
+        """Combines the firing strengths of the antecedents with
+        respect to the rule. This output set is then computed.
 
         Args:
             firing_strengths: dictionary of firing strengths of the

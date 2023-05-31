@@ -10,6 +10,11 @@ class Proposition(ABC):
 
     A Proposition is defined as an Antecedent or Consequent, with
     only 1 linguistic term, i.e "temperature IS hot".
+
+    Attributes:
+        name: name of the linguistic variable (e.g. temperature).
+        term: linguistic term (e.g hot).
+
     """
 
     @property
