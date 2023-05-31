@@ -3,22 +3,20 @@ on: [push, pull_request]
 jobs:
   run:
     runs-on: ubuntu-latest
-    env:
-      OS: ubuntu-latest
-      PYTHON: '3.8'
+    timeout-minutes: 10 
     steps:
-    - uses: checkout@v2
-      with:
-        fetch-depth: '2'
-    
-    - name: Setup Python
-      uses: actions/setup-python@master
-      with:
-        python-version: 3.8
-    - name: Generate Report
-      run: |
-        pip install coverage
-        coverage run -m pytest -vs
-    - name: Upload Coverage to Codecov
-      uses: codecov/codecov-action@v2
+      - name: Checkout repo code
+        uses: actions/checkout@v2 
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+      - name: Install coverage
+        run: |
+          pip install coverage
+      - name: Generate report
+        run: |
+          coverage run -m pytest -vs
+      - name: Upload Coverage to Codecov
+        uses: codecov/codecov-action@v2
       
