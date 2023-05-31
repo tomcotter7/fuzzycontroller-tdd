@@ -3,5 +3,5 @@
 /docs/make.bat
 /docs/Makefile
 /docs/source/
-
+.coverage
 
