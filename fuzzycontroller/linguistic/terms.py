@@ -64,9 +64,9 @@ class LinguisticTerm:
         return GauAngleMF(self.universe, mf['params'],
                           float(mf['start']), float(mf['end']))
 
-    def compute_membership(self, crisp_input: float or NDArray,
+    def compute_membership(self, input_value,
                            input_type: str) -> float:
-        """Compute the membership value of the given crisp input.
+        """Compute the membership value of the given input.
 
         Args:
             crisp_input: crisp input value.
@@ -75,9 +75,13 @@ class LinguisticTerm:
         Returns:
             membership value of the given crisp input.
         """
-        if input_type == "singleton":
-            return self.mf.singleton_interp_mem(crisp_input)
+        if input_type == "singleton" and isinstance(input_value, float):
+            return self.mf.singleton_interp_mem(input_value)
 
+        if input_type == "non-singleton" and isinstance(input_value,
+                                                        MembershipFunction):
+            return self.mf.nonsingleton_interp_mem(input_value.mf,
+                                                   defuzz='similarity')
         return 0.0
 
     def apply_fmax_or_fmin(self, f, other_input) -> NDArray:

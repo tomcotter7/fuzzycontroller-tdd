@@ -1,5 +1,5 @@
 from __future__ import annotations
-from abc import ABC
+from abc import ABC, abstractmethod
 from ..utils.json_handler import JsonHandler
 from ..rule.rules import Rules
 from ..linguistic.variables import LinguisticVariable
@@ -61,25 +61,9 @@ class FIS(ABC):
 
         self.rules = Rules(json_data["rules"], self.variables)
 
-    def get_all_firing_strengths(self, crisp_inputs: dict) \
-            -> dict[str, dict[str, float]]:
-        """Computes the firing strength of all the linguistic terms
-        from inputs. Inputs should be of the form {'input1': 1.0,
-        'input2': 2.0} where the keys are the names of the linguistic
-        variables and the values are the crisp inputs.
-
-        Args:
-            crisp_inputs: dictionary containing the crisp inputs.
-
-        Returns:
-            dictionary containing the firing strengths of all the linguistic
-            terms. Will be of the form {'input1': {('term1', 0.5), ...},
-            'input2': ...}
-
-        """
-        return {key: self.variables[key].compute_memberships(
-                crisp_inputs[key], self.type)
-                for key in crisp_inputs.keys()}
+    @abstractmethod
+    def get_all_firing_strengths(self, inputs) -> dict[str, dict[str, float]]:
+        pass
 
     def compute_output_sets(self, crisp_inputs: dict) -> dict[str, NDArray]:
         """Computes the output sets for the given crisp inputs.

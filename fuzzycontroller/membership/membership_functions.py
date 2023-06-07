@@ -171,9 +171,7 @@ class GauAngleMF(MembershipFunction):
         self._mf = fuzz.gaussmf(universe, params[0], params[1])
         # Calculate the indices of the start / end points in the NDArray
         step = universe[1] - universe[0]
-        start_idx = int(start * (1 / step)) + 1
-        if start_idx < 0:
-            start_idx = 0
+        start_idx = max(int(start * (1 / step)) + 1, 0)
         self._mf[:start_idx] = [0] * start_idx
         if end != -1:
             end_idx = int(end * (1 / step))

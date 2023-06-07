@@ -5,41 +5,57 @@ import numpy as np
 import pytest
 
 
-def test_singleton_interp_mem_tri():
+@pytest.fixture
+def tmf():
+    universe = np.arange(0, 11, 1)
+    tmf = TriangularMF(universe, [0, 5, 10])
+    yield tmf
+    tmf = None
+
+
+@pytest.fixture
+def trapmf():
+    universe = np.arange(0, 11, 1)
+    trapmf = TrapezoidalMF(universe, [0, 2, 8, 10])
+    yield trapmf
+    trapmf = None
+
+
+def test_singleton_interp_mem_tri_peak(tmf):
+    assert tmf.singleton_interp_mem(5) == 1
+
+
+def test_singleton_interp_mem_tri(tmf):
     universe = np.arange(0, 11, 1)
     mf = fuzz.trimf(universe, [0, 5, 10])
     x = 3
     expected = fuzz.interp_membership(universe, mf, x)
-    tmf = TriangularMF(universe, [0, 5, 10])
     actual = tmf.singleton_interp_mem(x)
     assert expected == actual
 
 
-def test_singleton_interp_mem_x_outside_universe_tri():
-    universe = np.arange(0, 11, 1)
-    tmf = TriangularMF(universe, [0, 5, 10])
+def test_singleton_interp_mem_x_outside_universe_tri(tmf):
     x = 11
     with pytest.raises(ValueError):
         tmf.singleton_interp_mem(x)
 
 
-def test_nonsingleton_interp_mem_similarity_tri():
+def test_nonsingleton_interp_mem_similarity_tri(tmf):
     universe = np.arange(0, 11, 1)
     mf = fuzz.trimf(universe, [0, 5, 10])
     input_mf = fuzz.trimf(universe, [0, 2, 4])
     expected = np.sum(np.fmin(input_mf, mf)) / np.sum(np.fmax(input_mf, mf))
-    tmf = TriangularMF(universe, [0, 5, 10])
     actual = tmf.nonsingleton_interp_mem(input_mf, "similarity")
+    print(expected)
     assert expected == actual
 
 
-def test_nonsingleton_interp_mem_centroid_tri():
+def test_nonsingleton_interp_mem_centroid_tri(tmf):
     universe = np.arange(0, 11, 1)
     mf = fuzz.trimf(universe, [0, 5, 10])
     input_mf = fuzz.trimf(universe, [0, 2, 4])
     x = fuzz.defuzz(universe, np.fmin(input_mf, mf), "centroid")
     expected = fuzz.interp_membership(universe, mf, x)
-    tmf = TriangularMF(universe, [0, 5, 10])
     actual = tmf.nonsingleton_interp_mem(input_mf, "centroid")
     assert expected == actual
 
@@ -53,22 +69,19 @@ def test_nonsingleton_interp_mem_centroid_no_overlap_tri():
     assert expected == actual
 
 
-def test_singleton_interp_mem_trap():
+def test_singleton_interp_mem_trap(trapmf):
     universe = np.arange(0, 11, 1)
     mf = fuzz.trapmf(universe, [0, 2, 8, 10])
     x = 3
     expected = fuzz.interp_membership(universe, mf, x)
-    tmf = TrapezoidalMF(universe, [0, 2, 8, 10])
-    actual = tmf.singleton_interp_mem(x)
+    actual = trapmf.singleton_interp_mem(x)
     assert expected == actual
 
 
-def test_singleton_interp_mem_trap_outside_universe():
-    universe = np.arange(0, 11, 1)
-    tmf = TrapezoidalMF(universe, [0, 2, 8, 10])
+def test_singleton_interp_mem_trap_outside_universe(trapmf):
     x = 11
     with pytest.raises(ValueError):
-        tmf.singleton_interp_mem(x)
+        trapmf.singleton_interp_mem(x)
 
 
 def test_nonsingleton_interp_mem_similarity_trap():
@@ -115,16 +128,21 @@ def test_singleton_interp_mem_gauanle_with_float_start_stop():
     universe = np.arange(0, 11, 0.1)
     gamf = GauAngleMF(universe, [3, 1], 2.1, 4.4)
     gmf = fuzz.gaussmf(universe, 3, 1)
-    """
-    for i in range(len(gamf.mf)):
-        print(gamf.mf[i], gamf.universe[i])
-    """
     assert gamf.singleton_interp_mem(1.9) == 0
     assert gamf.singleton_interp_mem(2.2) == \
         fuzz.interp_membership(universe, gmf, 2.2)
     assert gamf.singleton_interp_mem(4.3) == \
         fuzz.interp_membership(universe, gmf, 4.3)
     assert gamf.singleton_interp_mem(4.6) == 0
+
+
+def test_singleton_interp_mem_gauangle_with_float_start_stop_temp():
+    universe = np.arange(0, 60.1, 0.1)
+    gamf = GauAngleMF(universe, [35.3, 0.25], 35, 35.8)
+    assert gamf.mf[350] == 0
+    assert gamf.mf[358] == 0
+    assert gamf.mf[351] != 0
+    assert gamf.mf[357] != 0
 
 
 def test_singleton_interp_mem_gauangle_outside_range_lower():
