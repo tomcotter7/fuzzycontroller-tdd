@@ -61,4 +61,4 @@ def test_defuzzified_output(nsfis):
               "headache": {"start": 3, "end": 4},
               "age": {"start": 10, "end": 15}}
     output = nsfis.compute_defuzzified_output(inputs)
-    assert output == 35.440260519376
+    assert output == 35.44026051937654

@@ -83,5 +83,5 @@ def test_get_all_firing_strengths_singleton():
                                  }
                                        }
                              })
-    fs = lv.compute_memberships(10, "singleton")
+    fs = lv.compute_memberships(10.0, "singleton")
     assert fs == {"cold": 1.0}
