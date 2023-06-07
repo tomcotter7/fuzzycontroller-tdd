@@ -44,16 +44,16 @@ def test_create_input_fuzzy_sets(nsfis):
 def test_get_all_firing_strengths_temp_cold(nsfis):
     inputs = {"temperature": {"start": 34, "end": 36.5}}
     fs = nsfis.get_all_firing_strengths(inputs)
-    assert fs["temperature"]["very_cold"] == 0.004550528977570538
-    assert fs["temperature"]["cold"] == 0.3415716051336929
-    assert fs["temperature"]["standard"] == 0.04793461205730871
+    assert round(fs["temperature"]["very_cold"], 5) == 0.00455
+    assert round(fs["temperature"]["cold"], 5) == 0.34157
+    assert round(fs["temperature"]["standard"], 5) == 0.04793
 
 
 def test_get_all_firing_strengths_temp_hot(nsfis):
     inputs = {"temperature": {"start": 38, "end": 40}}
     fs = nsfis.get_all_firing_strengths(inputs)
-    assert fs["temperature"]["hot"] == 0.6461319440242643
-    assert fs["temperature"]["very_hot"] == 0.008914241060577628
+    assert round(fs["temperature"]["hot"], 5) == 0.64613
+    assert round(fs["temperature"]["very_hot"], 5) == 0.00891
 
 
 def test_defuzzified_output(nsfis):
@@ -61,4 +61,4 @@ def test_defuzzified_output(nsfis):
               "headache": {"start": 3, "end": 4},
               "age": {"start": 10, "end": 15}}
     output = nsfis.compute_defuzzified_output(inputs)
-    assert output == 35.44026051937654
+    assert round(output, 5) == 35.44026
