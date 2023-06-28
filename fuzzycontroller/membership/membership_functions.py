@@ -86,6 +86,10 @@ class MembershipFunction(ABC):
 
         return -1
 
+    def graph(self, ax, name: str):
+        """Plots the membership function on the given axis."""
+        ax.plot(self.universe, self.mf, linewidth=1.5, label=name)
+
 
 class TriangularMF(MembershipFunction):
     """A Triangular Membership Function"""

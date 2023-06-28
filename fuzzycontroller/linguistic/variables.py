@@ -96,3 +96,8 @@ class LinguisticVariable:
             search_term: name of the linguistic term.
         """
         return self.terms[search_term]
+
+    def graph(self, ax):
+        """Plot all the linguistic terms of this variable onto a graph"""
+        for term in self.terms.values():
+            term.graph(ax)

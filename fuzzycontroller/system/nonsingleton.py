@@ -7,7 +7,7 @@ class NonSingletonFIS(FIS):
     """A NonSingleton Fuzzy Inference System
 
     A non-singleton inferences system calculates the firing strengths /
-    degrees of membership using non-singleton fuzzy sets. Essentially the 
+    degrees of membership using non-singleton fuzzy sets. Essentially the
     inputs are type-1 fuzzy sets. Inherits from :class:`FIS`.
     """
 

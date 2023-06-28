@@ -99,3 +99,7 @@ class LinguisticTerm:
         """
 
         return f(self.mf.mf, other_input)
+    
+    def graph(self, ax):
+        """Plot this linguistic term's membership function."""
+        self.mf.graph(ax, self.name)

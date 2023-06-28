@@ -6,6 +6,7 @@ from ..linguistic.variables import LinguisticVariable
 from numpy.typing import NDArray
 import skfuzzy as fuzz
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 class FIS(ABC):
@@ -109,3 +110,20 @@ class FIS(ABC):
         aggregate_set = self.compute_aggregate_set(crisp_inputs)
         return fuzz.defuzz(self.variables[self.output_variable].universe,
                            aggregate_set, defuzzication_method)
+
+    def graph_membership_functions(self):
+        """Graphs the membership functions for all the linguistic variables."""
+        fig, axs = plt.subplots(nrows=len(self.variables), figsize=(15, 5))
+        for i, (key, variable) in enumerate(self.variables.items()):
+            variable.graph(axs[i])
+            axs[i].set_title(key)
+            axs[i].legend()
+
+        for ax in axs:
+            ax.spines['top'].set_visible(False)
+            ax.spines['right'].set_visible(False)
+            ax.get_xaxis().tick_bottom()
+            ax.get_yaxis().tick_left()
+
+        plt.tight_layout()
+        plt.show()

@@ -6,14 +6,21 @@ This project is an extensible fuzzy inference system (FIS) that can be used to c
 
 ## Usage
 
-Currently, there only exists a Singelton Inference system. To use this, simply ```from fuzzycontroller.system.singleton import SingletonFIS```. This class can be used to create an inference system.
+There exists both a Singleton & Non-Singleton Version of the FIS. The singleton version can be used as follows:
 
-**Loading Data**
+  - ```from fuzzycontroller.system.singleton import SingletonFIS```
+  - ```fis = SingletonFIS()```
+  - ```sfis.load_data('your_data_file.json')```
 
-  - ```sis = SingletonFIS()```
-  - ```sis.load_data('your_data.json')```
+The data should follow the format of `example.json`.
 
-The JSON data should be in the same format as specified in /fuzzycontroller/system/tests/data.json.
+The Non-Singleton System can be used in a similar manner.
+
+  - ```from fuzzycontroller.system.nonsingleton import NonSingletonFIS```
+  - ```nsfis = NonSingleton()```
+  - ```nsfis.load_date('your_data_file')```
+
+The data file can be in the same format, as just the inputs will differ.
 
 ## TDD
 
