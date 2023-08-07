@@ -1,6 +1,5 @@
 from fuzzycontroller.system.singleton import SingletonFIS
 from fuzzycontroller.system.nonsingleton import NonSingletonFIS
-import os
 
 # Singleton FIS
 
